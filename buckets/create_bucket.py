@@ -17,7 +17,7 @@ try:
                         secure=False)
 
     # Make a new bucket.
-    minioClient.make_bucket("dj-site", location="us-east-1")
+    minioClient.make_bucket("dj-site1", location="us-east-1")
 
 except S3Error as err:
     print(err)

@@ -2,6 +2,7 @@ from dotenv import load_dotenv
 from minio import Minio
 from minio.error import S3Error
 import os
+import json
 
 # Load the environment variables from the .env file.
 load_dotenv()
@@ -16,9 +17,9 @@ try:
                         secret_key=MINIO_SECRET_KEY,
                         secure=False)
 
-    # Delete a new bucket.
-    minioClient.remove_bucket("dj-site1")
-
+    # Read bucket Policy.
+    policy = minioClient.get_bucket_policy("dj-site-w-policy1")
+    print(policy)
 
 except S3Error as err:
     print(err)

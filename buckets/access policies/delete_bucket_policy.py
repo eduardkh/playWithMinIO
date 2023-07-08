@@ -17,9 +17,8 @@ try:
                         secret_key=MINIO_SECRET_KEY,
                         secure=False)
 
-    # Read bucket Policy.
-    policy = minioClient.get_bucket_policy("dj-site")
-    print(policy)
+    # Delete bucket Policy.
+    minioClient.delete_bucket_policy("dj-site-w-policy1")
 
 except S3Error as err:
     print(err)
