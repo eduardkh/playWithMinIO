@@ -16,8 +16,10 @@ try:
                         secret_key=MINIO_SECRET_KEY,
                         secure=False)
 
-    # Make a new bucket.
-    minioClient.make_bucket("dj-site", location="us-east-1")
+    # List buckets.
+    buckets = minioClient.list_buckets()
+    for bucket in buckets:
+        print(bucket.name, bucket.creation_date)
 
 except S3Error as err:
     print(err)

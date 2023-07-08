@@ -16,8 +16,9 @@ try:
                         secret_key=MINIO_SECRET_KEY,
                         secure=False)
 
-    # Make a new bucket.
-    minioClient.make_bucket("dj-site", location="us-east-1")
+    # Delete a new bucket.
+    minioClient.remove_bucket("dj-site1")
+
 
 except S3Error as err:
     print(err)
