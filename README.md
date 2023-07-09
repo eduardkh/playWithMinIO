@@ -16,3 +16,25 @@ docker run -p 9000:9000 \
 -v $(pwd)/data:/data \
 minio/minio server /data
 ```
+
+> install mc tool
+
+```bash
+curl https://dl.min.io/client/mc/release/linux-amd64/mc \
+  --create-dirs \
+  -o $HOME/minio-binaries/mc
+
+chmod +x $HOME/minio-binaries/mc
+export PATH=$PATH:$HOME/minio-binaries/
+
+mc --help
+```
+
+> configure and use mc tool
+
+```bash
+# set endpoint
+mc alias set MinIO http://localhost:9000 [YOUR-ACCESS-KEY] [YOUR-SECRET-KEY]
+# change bucket policy to read
+mc anonymous set download MinIO/media
+```
